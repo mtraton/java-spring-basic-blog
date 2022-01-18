@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class PostRepository {
@@ -49,6 +50,9 @@ public class PostRepository {
     }
 
     public Post findById(Long id) {
-        return null;
+        return ALL_POSTS.stream()
+                .filter(post -> Objects.equals(post.getId(), id))
+                .findFirst()
+                .orElse(null);
     }
 }
